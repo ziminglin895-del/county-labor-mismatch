@@ -1,0 +1,240 @@
+{
+  "generated_at": "2026-09-25T10:47:29.842590+08:00",
+  "process": {
+    "script": "run_resume_88_105.py",
+    "status": "completed",
+    "done_lines": 19,
+    "restart_count": 0
+  },
+  "batch_71_105": {
+    "table": [
+      {
+        "code": "411330",
+        "name": "桐柏县",
+        "rows": 34
+      },
+      {
+        "code": "411381",
+        "name": "邓州市",
+        "rows": 45
+      },
+      {
+        "code": "411421",
+        "name": "民权县",
+        "rows": 70
+      },
+      {
+        "code": "411422",
+        "name": "睢县",
+        "rows": 30
+      },
+      {
+        "code": "411423",
+        "name": "宁陵县",
+        "rows": 64
+      },
+      {
+        "code": "411424",
+        "name": "柘城县",
+        "rows": 72
+      },
+      {
+        "code": "411425",
+        "name": "虞城县",
+        "rows": 74
+      },
+      {
+        "code": "411426",
+        "name": "夏邑县",
+        "rows": 65
+      },
+      {
+        "code": "411481",
+        "name": "永城市",
+        "rows": 41
+      },
+      {
+        "code": "411521",
+        "name": "罗山县",
+        "rows": 64
+      },
+      {
+        "code": "411522",
+        "name": "光山县",
+        "rows": 60
+      },
+      {
+        "code": "411523",
+        "name": "新县",
+        "rows": 69
+      },
+      {
+        "code": "411524",
+        "name": "商城县",
+        "rows": 7
+      },
+      {
+        "code": "411525",
+        "name": "固始县",
+        "rows": 44
+      },
+      {
+        "code": "411526",
+        "name": "潢川县",
+        "rows": 57
+      },
+      {
+        "code": "411527",
+        "name": "淮滨县",
+        "rows": 46
+      },
+      {
+        "code": "411528",
+        "name": "息县",
+        "rows": 65
+      },
+      {
+        "code": "411621",
+        "name": "扶沟县",
+        "rows": 66
+      },
+      {
+        "code": "411622",
+        "name": "西华县",
+        "rows": 51
+      },
+      {
+        "code": "411623",
+        "name": "商水县",
+        "rows": 46
+      },
+      {
+        "code": "411624",
+        "name": "沈丘县",
+        "rows": 47
+      },
+      {
+        "code": "411625",
+        "name": "郸城县",
+        "rows": 80
+      },
+      {
+        "code": "411627",
+        "name": "太康县",
+        "rows": 28
+      },
+      {
+        "code": "411628",
+        "name": "鹿邑县",
+        "rows": 30
+      },
+      {
+        "code": "411681",
+        "name": "项城市",
+        "rows": 42
+      },
+      {
+        "code": "411721",
+        "name": "西平县",
+        "rows": 82
+      },
+      {
+        "code": "411722",
+        "name": "上蔡县",
+        "rows": 54
+      },
+      {
+        "code": "411723",
+        "name": "平舆县",
+        "rows": 79
+      },
+      {
+        "code": "411724",
+        "name": "正阳县",
+        "rows": 59
+      },
+      {
+        "code": "411725",
+        "name": "确山县",
+        "rows": 53
+      },
+      {
+        "code": "411726",
+        "name": "泌阳县",
+        "rows": 39
+      },
+      {
+        "code": "411727",
+        "name": "汝南县",
+        "rows": 67
+      },
+      {
+        "code": "411728",
+        "name": "遂平县",
+        "rows": 59
+      },
+      {
+        "code": "411729",
+        "name": "新蔡县",
+        "rows": 73
+      },
+      {
+        "code": "419001",
+        "name": "济源市",
+        "rows": 54
+      }
+    ],
+    "rows_total": 1916,
+    "empty_counties": [],
+    "refills": [
+      {
+        "code": "410923",
+        "name": "南乐县",
+        "rows": 60,
+        "files": [
+          "410923_南乐县.csv"
+        ]
+      },
+      {
+        "code": "410783",
+        "name": "长垣市",
+        "rows": 57,
+        "files": [
+          "410783_长垣市.csv"
+        ]
+      }
+    ]
+  },
+  "province_wide": {
+    "csv_count": 104,
+    "total_rows": 4754,
+    "zero_row_counties": [
+      {
+        "code": "410324",
+        "name": "栾川县"
+      }
+    ],
+    "招聘人数": {
+      "null_count": 3676,
+      "row_count": 4754,
+      "null_rate": 0.773243584350021
+    }
+  },
+  "coverage": {
+    "seed_count": 105,
+    "missing_seed_files": [
+      {
+        "code": "410324",
+        "name": "栾川县"
+      }
+    ]
+  },
+  "errors": [],
+  "mirror_ok": true,
+  "mirror_counts": {
+    "source_csv": 104,
+    "destination_csv": 104,
+    "source_summaries": 5,
+    "destination_summaries": 5
+  }
+}

@@ -1,0 +1,6 @@
+# OS / Office 临时文件不入库
+Thumbs.db
+Desktop.ini
+~$*
+*.tmp
+*.bak

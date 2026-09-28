@@ -1,0 +1,2059 @@
+{
+ "platform": "58同城 (mobile pages m.58.com)",
+ "crawl_start": "2026-09-25 23:24:59 Asia/Shanghai",
+ "crawl_end": "2026-09-25 23:57:58 Asia/Shanghai",
+ "crawler": "Playwright chromium headless, device=iPhone 13 emulation, locale zh-CN, timezone Asia/Shanghai; run on the GrokBot cloud box; 3-5.5 s between pages; one browser context",
+ "box_egress": {
+  "ip": "3.12.46.242",
+  "geo_by_ipinfo": "Columbus, Ohio, US (AWS us-east-2)",
+  "58_ipCityListName": "empty on every list page (58 did not resolve a Chinese ipCity)",
+  "58_initial_state_location_default": "北京/bj (58's default for unresolved IPs; list content itself was 甘孜/凉山 per final URL, page cityListName and title, so pages were kept)"
+ },
+ "antibot": "no captcha / callback.58.com/antibot / verifycode page was hit on any URL",
+ "site_findings": [
+  "The ?key= parameter is ignored on these 58 mobile list pages (page state kw=null): every county's keyword URL returns the same generic 甘孜 (or 凉山) full-time list; 58 renders ~30 posts/page and the 甘孜 pool is only ~2-3 pages deep, with order varying between loads.",
+  "ganzi.58.com/job/?key=X redirects to m.58.com/ganzi/job/?reform=pcfront&key=X (kept, valid 甘孜 page). ganzi.58.com/ (home) redirects to m.58.com/city.html?from=iperror (58 city picker) -> discarded.",
+  "m.58.com/xichang/ is 屯昌(海南)'s 西昌 area, not 凉山 西昌 -> discarded as redirect to another province (it did not return 404). m.58.com/liangshan/job/?key=越西 worked.",
+  "Extra entries used (county area channels taken from 58's own 区域 filter, luna.58.com/api/filter): 甘孜 danbaxian, yajinagxian/yajiangxian, daofuxiangz/daofuxian, luhuoxiangz/luhuoxian, xinlongxiangz/xinlongxian, degexian, sedaxiangz/sedaxian, derongxiangz/derongxian; 凉山 yxls (越西), yxcqls (越西城区); each as /job/ and /zhaopin/. Area pages list a few local posts, then pad with prefecture-wide filler."
+ ],
+ "rules_applied": {
+  "keep": "county full or short name in 工作区域, 岗位标题 or 企业名称; if the match was only in title/company and 工作区域 named another place (康定/泸定/巴塘/稻城/甘孜县/理塘/西昌 etc.) the post would be excluded (no such case occurred). Prefecture text '甘孜' alone never counts.",
+  "dedupe": "(企业名称, 招聘岗位, 工作区域), plus 1 same-infoId duplicate removed (see dropped_duplicates)",
+  "学历要求": "from list info-tag only; '经验不限' is NOT treated as 学历不限",
+  "招聘人数": "only from a 招N人 tag, else empty",
+  "salary": "all salaries seen were X-Y元/月; 面议/daily/hourly would be left empty"
+ },
+ "total_rows": 26,
+ "counties": [
+  {
+   "county_code": "513323",
+   "county_name": "丹巴县",
+   "rows": 0,
+   "行数": 0,
+   "entries_that_yielded_rows": "",
+   "opened_urls": [
+    "https://m.58.com/ganzi/zhaopin/",
+    "https://ganzi.58.com/",
+    "https://m.58.com/ganzi/job/?key=%E4%B8%B9%E5%B7%B4",
+    "https://m.58.com/ganzi/job/pn2/",
+    "https://m.58.com/ganzi/job/pn3/",
+    "https://m.58.com/ganzi/job/pn4/",
+    "https://ganzi.58.com/job/?key=%E4%B8%B9%E5%B7%B4",
+    "https://m.58.com/ganzi/job/pn2/",
+    "https://m.58.com/ganzi/job/pn3/",
+    "https://m.58.com/ganzi/job/pn4/",
+    "https://m.58.com/danbaxian/job/",
+    "https://m.58.com/danbaxian/zhaopin/"
+   ],
+   "discarded_urls": [
+    {
+     "url": "https://ganzi.58.com/",
+     "final_url": "https://m.58.com/city.html?from=iperror",
+     "reason": "warm-up page: redirect to 58 city selector (m.58.com/city.html?from=iperror)"
+    }
+   ],
+   "zero_row_reason": "m.58.com/ganzi/job/?key=丹巴 and ganzi.58.com/job/?key=丹巴 both ignore the keyword (page state kw=null) and return the generic 甘孜 full-time pool; pages 1-3 (~75 distinct posts; page 4 empty) are 康定/泸定/甘孜县/巴塘/理塘/稻城/九龙/白玉/雅江/道孚/炉霍/新龙/德格/色达 posts, none mentions 丹巴 in 工作区域/岗位标题/企业名称. 58's own 丹巴 area channel (m.58.com/danbaxian/job/ and /zhaopin/, from the 区域 filter) has no local posts, only prefecture-wide filler (none 丹巴). 58 currently has no 丹巴 job posts visible.",
+   "pages": [
+    {
+     "entry": "m_key",
+     "page": 1,
+     "how": "entry",
+     "new_items_vs_prev_pages": 30,
+     "url": "https://m.58.com/ganzi/job/?key=%E4%B8%B9%E5%B7%B4",
+     "items": 30,
+     "matched": 0,
+     "cityListName": "ganzi",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "m_key",
+     "page": 2,
+     "how": "clicked 下一页",
+     "new_items_vs_prev_pages": 30,
+     "url": "https://m.58.com/ganzi/job/pn2/",
+     "items": 30,
+     "matched": 0,
+     "cityListName": "ganzi",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "m_key",
+     "page": 3,
+     "how": "clicked 下一页",
+     "new_items_vs_prev_pages": 15,
+     "url": "https://m.58.com/ganzi/job/pn3/",
+     "items": 30,
+     "matched": 0,
+     "cityListName": "ganzi",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "m_key",
+     "page": 4,
+     "how": "constructed (pager not rendered)",
+     "new_items_vs_prev_pages": 0,
+     "url": "https://m.58.com/ganzi/job/pn4/",
+     "items": 0,
+     "matched": 0,
+     "cityListName": "ganzi",
+     "kw": "null",
+     "ipCityListName": "",
+     "stop": "no new items vs previous pages"
+    },
+    {
+     "entry": "pc_key",
+     "page": 1,
+     "how": "entry",
+     "new_items_vs_prev_pages": 30,
+     "url": "https://m.58.com/ganzi/job/?reform=pcfront&key=%E4%B8%B9%E5%B7%B4",
+     "items": 30,
+     "matched": 0,
+     "cityListName": "ganzi",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "pc_key",
+     "page": 2,
+     "how": "clicked 下一页",
+     "new_items_vs_prev_pages": 30,
+     "url": "https://m.58.com/ganzi/job/pn2/",
+     "items": 30,
+     "matched": 0,
+     "cityListName": "ganzi",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "pc_key",
+     "page": 3,
+     "how": "clicked 下一页",
+     "new_items_vs_prev_pages": 15,
+     "url": "https://m.58.com/ganzi/job/pn3/",
+     "items": 30,
+     "matched": 0,
+     "cityListName": "ganzi",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "pc_key",
+     "page": 4,
+     "how": "constructed (pager not rendered)",
+     "new_items_vs_prev_pages": 0,
+     "url": "https://m.58.com/ganzi/job/pn4/",
+     "items": 0,
+     "matched": 0,
+     "cityListName": "ganzi",
+     "kw": "null",
+     "ipCityListName": "",
+     "stop": "no new items vs previous pages"
+    },
+    {
+     "entry": "area_danbaxian",
+     "page": 1,
+     "how": "entry",
+     "new_items_vs_prev_pages": 30,
+     "url": "https://m.58.com/danbaxian/job/",
+     "items": 30,
+     "matched": 0,
+     "cityListName": "danbaxian",
+     "kw": "null",
+     "ipCityListName": "",
+     "stop": "area page with 0 county matches"
+    },
+    {
+     "entry": "area_zhaopin_danbaxian",
+     "page": 1,
+     "how": "entry",
+     "new_items_vs_prev_pages": 30,
+     "url": "https://m.58.com/danbaxian/zhaopin/",
+     "items": 30,
+     "matched": 0,
+     "cityListName": "danbaxian",
+     "kw": "null",
+     "ipCityListName": "",
+     "stop": "area page with 0 county matches"
+    }
+   ],
+   "matched_posts": [],
+   "excluded_ambiguous": [],
+   "dropped_duplicates": []
+  },
+  {
+   "county_code": "513325",
+   "county_name": "雅江县",
+   "rows": 7,
+   "行数": 7,
+   "entries_that_yielded_rows": "rows came from m.58.com/ganzi/job/pn2/ and pn3/ (the generic 甘孜 pool, reached from the ?key= entries via 下一页) + m.58.com/yajinagxian/zhaopin/ (58 雅江县 area channel)",
+   "opened_urls": [
+    "https://m.58.com/ganzi/zhaopin/",
+    "https://ganzi.58.com/",
+    "https://m.58.com/ganzi/job/?key=%E9%9B%85%E6%B1%9F",
+    "https://m.58.com/ganzi/job/pn2/",
+    "https://m.58.com/ganzi/job/pn3/",
+    "https://m.58.com/ganzi/job/pn4/",
+    "https://ganzi.58.com/job/?key=%E9%9B%85%E6%B1%9F",
+    "https://m.58.com/ganzi/job/pn2/?reform=pcfront&key=%E9%9B%85%E6%B1%9F",
+    "https://m.58.com/ganzi/job/pn3/",
+    "https://m.58.com/yajinagxian/job/",
+    "https://m.58.com/yajiangxian/job/",
+    "https://m.58.com/yajiangxian/job/pn2/",
+    "https://m.58.com/yajinagxian/zhaopin/",
+    "https://m.58.com/yajinagxian/zhaopin/pn2/",
+    "https://m.58.com/yajinagxian/zhaopin/pn3/",
+    "https://m.58.com/yajiangxian/zhaopin/",
+    "https://m.58.com/yajiangxian/zhaopin/pn2/",
+    "https://m.58.com/yajiangxian/zhaopin/pn3/"
+   ],
+   "discarded_urls": [
+    {
+     "url": "https://ganzi.58.com/",
+     "final_url": "https://m.58.com/city.html?from=iperror",
+     "reason": "warm-up page: redirect to 58 city selector (m.58.com/city.html?from=iperror)"
+    }
+   ],
+   "zero_row_reason": null,
+   "pages": [
+    {
+     "entry": "m_key",
+     "page": 1,
+     "how": "entry",
+     "new_items_vs_prev_pages": 30,
+     "url": "https://m.58.com/ganzi/job/?key=%E9%9B%85%E6%B1%9F",
+     "items": 30,
+     "matched": 0,
+     "cityListName": "ganzi",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "m_key",
+     "page": 2,
+     "how": "clicked 下一页",
+     "new_items_vs_prev_pages": 30,
+     "url": "https://m.58.com/ganzi/job/pn2/",
+     "items": 30,
+     "matched": 3,
+     "cityListName": "ganzi",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "m_key",
+     "page": 3,
+     "how": "clicked 下一页",
+     "new_items_vs_prev_pages": 21,
+     "url": "https://m.58.com/ganzi/job/pn3/",
+     "items": 30,
+     "matched": 3,
+     "cityListName": "ganzi",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "m_key",
+     "page": 4,
+     "how": "constructed (pager not rendered)",
+     "new_items_vs_prev_pages": 0,
+     "url": "https://m.58.com/ganzi/job/pn4/",
+     "items": 0,
+     "matched": 0,
+     "cityListName": "ganzi",
+     "kw": "null",
+     "ipCityListName": "",
+     "stop": "no new items vs previous pages"
+    },
+    {
+     "entry": "pc_key",
+     "page": 1,
+     "how": "entry",
+     "new_items_vs_prev_pages": 30,
+     "url": "https://m.58.com/ganzi/job/?reform=pcfront&key=%E9%9B%85%E6%B1%9F",
+     "items": 30,
+     "matched": 0,
+     "cityListName": "ganzi",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "pc_key",
+     "page": 2,
+     "how": "constructed (pager not rendered)",
+     "new_items_vs_prev_pages": 30,
+     "url": "https://m.58.com/ganzi/job/pn2/?reform=pcfront&key=%E9%9B%85%E6%B1%9F",
+     "items": 30,
+     "matched": 3,
+     "cityListName": "ganzi",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "pc_key",
+     "page": 3,
+     "how": "clicked 下一页",
+     "new_items_vs_prev_pages": 0,
+     "url": "https://m.58.com/ganzi/job/pn3/",
+     "items": 0,
+     "matched": 0,
+     "cityListName": "ganzi",
+     "kw": "null",
+     "ipCityListName": "",
+     "stop": "no new items vs previous pages"
+    },
+    {
+     "entry": "area_yajinagxian",
+     "page": 1,
+     "how": "entry",
+     "new_items_vs_prev_pages": 30,
+     "url": "https://m.58.com/yajinagxian/job/",
+     "items": 30,
+     "matched": 0,
+     "cityListName": "yajinagxian",
+     "kw": "null",
+     "ipCityListName": "",
+     "stop": "area page with 0 county matches"
+    },
+    {
+     "entry": "area_yajiangxian",
+     "page": 1,
+     "how": "entry",
+     "new_items_vs_prev_pages": 30,
+     "url": "https://m.58.com/yajiangxian/job/",
+     "items": 30,
+     "matched": 2,
+     "cityListName": "yajiangxian",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "area_yajiangxian",
+     "page": 2,
+     "how": "constructed (pager not rendered)",
+     "new_items_vs_prev_pages": 0,
+     "url": "https://m.58.com/yajiangxian/job/pn2/",
+     "items": 0,
+     "matched": 0,
+     "cityListName": "yajiangxian",
+     "kw": "null",
+     "ipCityListName": "",
+     "stop": "no new items vs previous pages"
+    },
+    {
+     "entry": "area_zhaopin_yajinagxian",
+     "page": 1,
+     "how": "entry",
+     "new_items_vs_prev_pages": 30,
+     "url": "https://m.58.com/yajinagxian/zhaopin/",
+     "items": 30,
+     "matched": 7,
+     "cityListName": "yajinagxian",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "area_zhaopin_yajinagxian",
+     "page": 2,
+     "how": "constructed (pager not rendered)",
+     "new_items_vs_prev_pages": 5,
+     "url": "https://m.58.com/yajinagxian/zhaopin/pn2/",
+     "items": 30,
+     "matched": 2,
+     "cityListName": "yajinagxian",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "area_zhaopin_yajinagxian",
+     "page": 3,
+     "how": "constructed (pager not rendered)",
+     "new_items_vs_prev_pages": 0,
+     "url": "https://m.58.com/yajinagxian/zhaopin/pn3/",
+     "items": 0,
+     "matched": 0,
+     "cityListName": "yajinagxian",
+     "kw": "null",
+     "ipCityListName": "",
+     "stop": "no new items vs previous pages"
+    },
+    {
+     "entry": "area_zhaopin_yajiangxian",
+     "page": 1,
+     "how": "entry",
+     "new_items_vs_prev_pages": 30,
+     "url": "https://m.58.com/yajiangxian/zhaopin/",
+     "items": 30,
+     "matched": 4,
+     "cityListName": "yajiangxian",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "area_zhaopin_yajiangxian",
+     "page": 2,
+     "how": "constructed (pager not rendered)",
+     "new_items_vs_prev_pages": 2,
+     "url": "https://m.58.com/yajiangxian/zhaopin/pn2/",
+     "items": 30,
+     "matched": 2,
+     "cityListName": "yajiangxian",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "area_zhaopin_yajiangxian",
+     "page": 3,
+     "how": "constructed (pager not rendered)",
+     "new_items_vs_prev_pages": 0,
+     "url": "https://m.58.com/yajiangxian/zhaopin/pn3/",
+     "items": 0,
+     "matched": 0,
+     "cityListName": "yajiangxian",
+     "kw": "null",
+     "ipCityListName": "",
+     "stop": "no new items vs previous pages"
+    }
+   ],
+   "matched_posts": [
+    {
+     "title": "口腔护士/五险",
+     "region": "雅江县-解放街",
+     "company": "泸州市隆咚锵商贸有限公司",
+     "fields": [
+      "region"
+     ],
+     "page": "https://m.58.com/ganzi/job/pn2/"
+    },
+    {
+     "title": "诊所医生/包住五险",
+     "region": "雅江县-解放街",
+     "company": "泸州市隆咚锵商贸有限公司",
+     "fields": [
+      "region"
+     ],
+     "page": "https://m.58.com/ganzi/job/pn2/"
+    },
+    {
+     "title": "广告设计",
+     "region": "雅江县-解放街",
+     "company": "雅江宜创广告有限公司",
+     "fields": [
+      "region",
+      "company"
+     ],
+     "page": "https://m.58.com/ganzi/job/pn2/"
+    },
+    {
+     "title": "广告设计/6千起",
+     "region": "雅江县-解放街",
+     "company": "雅江楠鑫广告有限公司",
+     "fields": [
+      "region",
+      "company"
+     ],
+     "page": "https://m.58.com/ganzi/job/pn3/"
+    },
+    {
+     "title": "酒店前台",
+     "region": "甘孜周边-雅江",
+     "company": "雅江县悦程酒店管理有限公司",
+     "fields": [
+      "region",
+      "company"
+     ],
+     "page": "https://m.58.com/ganzi/job/pn3/"
+    },
+    {
+     "title": "酒店/主办会计5000起",
+     "region": "甘孜周边-雅江",
+     "company": "雅江县雅西印象酒店有限责任公司",
+     "fields": [
+      "region",
+      "company"
+     ],
+     "page": "https://m.58.com/ganzi/job/pn3/"
+    },
+    {
+     "title": "雅江楠鑫广告有限公司/广告设计/6千起",
+     "region": "雅江县-解放街",
+     "company": "雅江楠鑫广告有限公司",
+     "fields": [
+      "region",
+      "title",
+      "company"
+     ],
+     "page": "https://m.58.com/yajinagxian/zhaopin/"
+    }
+   ],
+   "excluded_ambiguous": [],
+   "dropped_duplicates": []
+  },
+  {
+   "county_code": "513326",
+   "county_name": "道孚县",
+   "rows": 2,
+   "行数": 2,
+   "entries_that_yielded_rows": "m.58.com/ganzi/job/pn2/ (generic 甘孜 pool reached from the ?key= entry)",
+   "opened_urls": [
+    "https://m.58.com/ganzi/zhaopin/",
+    "https://ganzi.58.com/",
+    "https://m.58.com/ganzi/job/?key=%E9%81%93%E5%AD%9A",
+    "https://m.58.com/ganzi/job/pn2/?key=%E9%81%93%E5%AD%9A",
+    "https://ganzi.58.com/job/?key=%E9%81%93%E5%AD%9A",
+    "https://m.58.com/ganzi/job/pn2/",
+    "https://m.58.com/ganzi/job/pn3/",
+    "https://m.58.com/ganzi/job/pn4/",
+    "https://m.58.com/daofuxiangz/job/",
+    "https://m.58.com/daofuxiangz/job/pn2/",
+    "https://m.58.com/daofuxian/job/",
+    "https://m.58.com/daofuxian/job/pn2/",
+    "https://m.58.com/daofuxiangz/zhaopin/",
+    "https://m.58.com/daofuxiangz/zhaopin/pn2/",
+    "https://m.58.com/daofuxian/zhaopin/",
+    "https://m.58.com/daofuxian/zhaopin/pn2/"
+   ],
+   "discarded_urls": [
+    {
+     "url": "https://ganzi.58.com/",
+     "final_url": "https://m.58.com/city.html?from=iperror",
+     "reason": "warm-up page: redirect to 58 city selector (m.58.com/city.html?from=iperror)"
+    }
+   ],
+   "zero_row_reason": null,
+   "pages": [
+    {
+     "entry": "m_key",
+     "page": 1,
+     "how": "entry",
+     "new_items_vs_prev_pages": 30,
+     "url": "https://m.58.com/ganzi/job/?key=%E9%81%93%E5%AD%9A",
+     "items": 30,
+     "matched": 0,
+     "cityListName": "ganzi",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "m_key",
+     "page": 2,
+     "how": "constructed (pager not rendered)",
+     "new_items_vs_prev_pages": 0,
+     "url": "https://m.58.com/ganzi/job/pn2/?key=%E9%81%93%E5%AD%9A",
+     "items": 0,
+     "matched": 0,
+     "cityListName": "ganzi",
+     "kw": "null",
+     "ipCityListName": "",
+     "stop": "no new items vs previous pages"
+    },
+    {
+     "entry": "pc_key",
+     "page": 1,
+     "how": "entry",
+     "new_items_vs_prev_pages": 30,
+     "url": "https://m.58.com/ganzi/job/?reform=pcfront&key=%E9%81%93%E5%AD%9A",
+     "items": 30,
+     "matched": 0,
+     "cityListName": "ganzi",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "pc_key",
+     "page": 2,
+     "how": "clicked 下一页",
+     "new_items_vs_prev_pages": 30,
+     "url": "https://m.58.com/ganzi/job/pn2/",
+     "items": 30,
+     "matched": 2,
+     "cityListName": "ganzi",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "pc_key",
+     "page": 3,
+     "how": "clicked 下一页",
+     "new_items_vs_prev_pages": 15,
+     "url": "https://m.58.com/ganzi/job/pn3/",
+     "items": 30,
+     "matched": 0,
+     "cityListName": "ganzi",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "pc_key",
+     "page": 4,
+     "how": "constructed (pager not rendered)",
+     "new_items_vs_prev_pages": 0,
+     "url": "https://m.58.com/ganzi/job/pn4/",
+     "items": 0,
+     "matched": 0,
+     "cityListName": "ganzi",
+     "kw": "null",
+     "ipCityListName": "",
+     "stop": "no new items vs previous pages"
+    },
+    {
+     "entry": "area_daofuxiangz",
+     "page": 1,
+     "how": "entry",
+     "new_items_vs_prev_pages": 30,
+     "url": "https://m.58.com/daofuxiangz/job/",
+     "items": 30,
+     "matched": 1,
+     "cityListName": "daofuxiangz",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "area_daofuxiangz",
+     "page": 2,
+     "how": "constructed (pager not rendered)",
+     "new_items_vs_prev_pages": 1,
+     "url": "https://m.58.com/daofuxiangz/job/pn2/",
+     "items": 30,
+     "matched": 0,
+     "cityListName": "daofuxiangz",
+     "kw": "null",
+     "ipCityListName": "",
+     "stop": "area page with 0 county matches"
+    },
+    {
+     "entry": "area_daofuxian",
+     "page": 1,
+     "how": "entry",
+     "new_items_vs_prev_pages": 1,
+     "url": "https://m.58.com/daofuxian/job/",
+     "items": 1,
+     "matched": 1,
+     "cityListName": "daofuxian",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "area_daofuxian",
+     "page": 2,
+     "how": "constructed (pager not rendered)",
+     "new_items_vs_prev_pages": 30,
+     "url": "https://m.58.com/daofuxian/job/pn2/",
+     "items": 30,
+     "matched": 0,
+     "cityListName": "daofuxian",
+     "kw": "null",
+     "ipCityListName": "",
+     "stop": "area page with 0 county matches"
+    },
+    {
+     "entry": "area_zhaopin_daofuxiangz",
+     "page": 1,
+     "how": "entry",
+     "new_items_vs_prev_pages": 30,
+     "url": "https://m.58.com/daofuxiangz/zhaopin/",
+     "items": 30,
+     "matched": 2,
+     "cityListName": "daofuxiangz",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "area_zhaopin_daofuxiangz",
+     "page": 2,
+     "how": "constructed (pager not rendered)",
+     "new_items_vs_prev_pages": 0,
+     "url": "https://m.58.com/daofuxiangz/zhaopin/pn2/",
+     "items": 30,
+     "matched": 2,
+     "cityListName": "daofuxiangz",
+     "kw": "null",
+     "ipCityListName": "",
+     "stop": "no new items vs previous pages"
+    },
+    {
+     "entry": "area_zhaopin_daofuxian",
+     "page": 1,
+     "how": "entry",
+     "new_items_vs_prev_pages": 30,
+     "url": "https://m.58.com/daofuxian/zhaopin/",
+     "items": 30,
+     "matched": 2,
+     "cityListName": "daofuxian",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "area_zhaopin_daofuxian",
+     "page": 2,
+     "how": "constructed (pager not rendered)",
+     "new_items_vs_prev_pages": 0,
+     "url": "https://m.58.com/daofuxian/zhaopin/pn2/",
+     "items": 0,
+     "matched": 0,
+     "cityListName": "daofuxian",
+     "kw": "null",
+     "ipCityListName": "",
+     "stop": "no new items vs previous pages"
+    }
+   ],
+   "matched_posts": [
+    {
+     "title": "工程资料员",
+     "region": "道孚县-花园广场",
+     "company": "西藏辰旭工程项目管理有限公司",
+     "fields": [
+      "region"
+     ],
+     "page": "https://m.58.com/ganzi/job/pn2/"
+    },
+    {
+     "title": "广告制作/安装包吃包住",
+     "region": "甘孜周边-道孚",
+     "company": "巴塘县鑫诚广告制作中心",
+     "fields": [
+      "region"
+     ],
+     "page": "https://m.58.com/ganzi/job/pn2/"
+    }
+   ],
+   "excluded_ambiguous": [],
+   "dropped_duplicates": []
+  },
+  {
+   "county_code": "513327",
+   "county_name": "炉霍县",
+   "rows": 1,
+   "行数": 1,
+   "entries_that_yielded_rows": "m.58.com/ganzi/job/pn2/ (generic 甘孜 pool reached from the ?key= entry)",
+   "opened_urls": [
+    "https://m.58.com/ganzi/zhaopin/",
+    "https://ganzi.58.com/",
+    "https://m.58.com/ganzi/job/?key=%E7%82%89%E9%9C%8D",
+    "https://m.58.com/ganzi/job/pn2/?key=%E7%82%89%E9%9C%8D",
+    "https://ganzi.58.com/job/?key=%E7%82%89%E9%9C%8D",
+    "https://m.58.com/ganzi/job/pn2/",
+    "https://m.58.com/ganzi/job/pn3/",
+    "https://m.58.com/ganzi/job/pn4/",
+    "https://m.58.com/luhuoxiangz/job/",
+    "https://m.58.com/luhuoxian/job/",
+    "https://m.58.com/luhuoxiangz/zhaopin/",
+    "https://m.58.com/luhuoxiangz/zhaopin/pn2/",
+    "https://m.58.com/luhuoxian/zhaopin/"
+   ],
+   "discarded_urls": [
+    {
+     "url": "https://ganzi.58.com/",
+     "final_url": "https://m.58.com/city.html?from=iperror",
+     "reason": "warm-up page: redirect to 58 city selector (m.58.com/city.html?from=iperror)"
+    }
+   ],
+   "zero_row_reason": null,
+   "pages": [
+    {
+     "entry": "m_key",
+     "page": 1,
+     "how": "entry",
+     "new_items_vs_prev_pages": 30,
+     "url": "https://m.58.com/ganzi/job/?key=%E7%82%89%E9%9C%8D",
+     "items": 30,
+     "matched": 0,
+     "cityListName": "ganzi",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "m_key",
+     "page": 2,
+     "how": "constructed (pager not rendered)",
+     "new_items_vs_prev_pages": 0,
+     "url": "https://m.58.com/ganzi/job/pn2/?key=%E7%82%89%E9%9C%8D",
+     "items": 30,
+     "matched": 0,
+     "cityListName": "ganzi",
+     "kw": "null",
+     "ipCityListName": "",
+     "stop": "no new items vs previous pages"
+    },
+    {
+     "entry": "pc_key",
+     "page": 1,
+     "how": "entry",
+     "new_items_vs_prev_pages": 30,
+     "url": "https://m.58.com/ganzi/job/?reform=pcfront&key=%E7%82%89%E9%9C%8D",
+     "items": 30,
+     "matched": 0,
+     "cityListName": "ganzi",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "pc_key",
+     "page": 2,
+     "how": "clicked 下一页",
+     "new_items_vs_prev_pages": 30,
+     "url": "https://m.58.com/ganzi/job/pn2/",
+     "items": 30,
+     "matched": 1,
+     "cityListName": "ganzi",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "pc_key",
+     "page": 3,
+     "how": "clicked 下一页",
+     "new_items_vs_prev_pages": 15,
+     "url": "https://m.58.com/ganzi/job/pn3/",
+     "items": 30,
+     "matched": 0,
+     "cityListName": "ganzi",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "pc_key",
+     "page": 4,
+     "how": "constructed (pager not rendered)",
+     "new_items_vs_prev_pages": 0,
+     "url": "https://m.58.com/ganzi/job/pn4/",
+     "items": 0,
+     "matched": 0,
+     "cityListName": "ganzi",
+     "kw": "null",
+     "ipCityListName": "",
+     "stop": "no new items vs previous pages"
+    },
+    {
+     "entry": "area_luhuoxiangz",
+     "page": 1,
+     "how": "entry",
+     "new_items_vs_prev_pages": 30,
+     "url": "https://m.58.com/luhuoxiangz/job/",
+     "items": 30,
+     "matched": 0,
+     "cityListName": "luhuoxiangz",
+     "kw": "null",
+     "ipCityListName": "",
+     "stop": "area page with 0 county matches"
+    },
+    {
+     "entry": "area_luhuoxian",
+     "page": 1,
+     "how": "entry",
+     "new_items_vs_prev_pages": 30,
+     "url": "https://m.58.com/luhuoxian/job/",
+     "items": 30,
+     "matched": 0,
+     "cityListName": "luhuoxian",
+     "kw": "null",
+     "ipCityListName": "",
+     "stop": "area page with 0 county matches"
+    },
+    {
+     "entry": "area_zhaopin_luhuoxiangz",
+     "page": 1,
+     "how": "entry",
+     "new_items_vs_prev_pages": 30,
+     "url": "https://m.58.com/luhuoxiangz/zhaopin/",
+     "items": 30,
+     "matched": 1,
+     "cityListName": "luhuoxiangz",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "area_zhaopin_luhuoxiangz",
+     "page": 2,
+     "how": "constructed (pager not rendered)",
+     "new_items_vs_prev_pages": 0,
+     "url": "https://m.58.com/luhuoxiangz/zhaopin/pn2/",
+     "items": 0,
+     "matched": 0,
+     "cityListName": "luhuoxiangz",
+     "kw": "null",
+     "ipCityListName": "",
+     "stop": "no new items vs previous pages"
+    },
+    {
+     "entry": "area_zhaopin_luhuoxian",
+     "page": 1,
+     "how": "entry",
+     "new_items_vs_prev_pages": 30,
+     "url": "https://m.58.com/luhuoxian/zhaopin/",
+     "items": 30,
+     "matched": 0,
+     "cityListName": "luhuoxian",
+     "kw": "null",
+     "ipCityListName": "",
+     "stop": "area page with 0 county matches"
+    }
+   ],
+   "matched_posts": [
+    {
+     "title": "柒色方服饰店/发型师/3千起",
+     "region": "炉霍县-霍尔广场",
+     "company": "炉霍县柒色方服饰店（个体工商户）",
+     "fields": [
+      "region",
+      "company"
+     ],
+     "page": "https://m.58.com/ganzi/job/pn2/"
+    }
+   ],
+   "excluded_ambiguous": [],
+   "dropped_duplicates": []
+  },
+  {
+   "county_code": "513329",
+   "county_name": "新龙县",
+   "rows": 1,
+   "行数": 1,
+   "entries_that_yielded_rows": "m.58.com/ganzi/job/?key=新龙 page 1 (generic 甘孜 pool; keyword ignored by 58)",
+   "opened_urls": [
+    "https://m.58.com/ganzi/zhaopin/",
+    "https://ganzi.58.com/",
+    "https://m.58.com/ganzi/job/?key=%E6%96%B0%E9%BE%99",
+    "https://m.58.com/ganzi/job/pn2/",
+    "https://m.58.com/ganzi/job/pn3/",
+    "https://m.58.com/ganzi/job/pn4/",
+    "https://m.58.com/ganzi/job/pn5/",
+    "https://ganzi.58.com/job/?key=%E6%96%B0%E9%BE%99",
+    "https://m.58.com/ganzi/job/pn2/",
+    "https://m.58.com/ganzi/job/pn3/",
+    "https://m.58.com/xinlongxiangz/job/",
+    "https://m.58.com/xinlongxiangz/job/pn2/",
+    "https://m.58.com/xinlongxian/job/",
+    "https://m.58.com/xinlongxian/job/pn2/",
+    "https://m.58.com/xinlongxian/job/pn3/",
+    "https://m.58.com/xinlongxiangz/zhaopin/",
+    "https://m.58.com/xinlongxiangz/zhaopin/pn2/",
+    "https://m.58.com/xinlongxian/zhaopin/"
+   ],
+   "discarded_urls": [
+    {
+     "url": "https://ganzi.58.com/",
+     "final_url": "https://m.58.com/city.html?from=iperror",
+     "reason": "warm-up page: redirect to 58 city selector (m.58.com/city.html?from=iperror)"
+    }
+   ],
+   "zero_row_reason": null,
+   "pages": [
+    {
+     "entry": "m_key",
+     "page": 1,
+     "how": "entry",
+     "new_items_vs_prev_pages": 30,
+     "url": "https://m.58.com/ganzi/job/?key=%E6%96%B0%E9%BE%99",
+     "items": 30,
+     "matched": 1,
+     "cityListName": "ganzi",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "m_key",
+     "page": 2,
+     "how": "clicked 下一页",
+     "new_items_vs_prev_pages": 30,
+     "url": "https://m.58.com/ganzi/job/pn2/",
+     "items": 30,
+     "matched": 0,
+     "cityListName": "ganzi",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "m_key",
+     "page": 3,
+     "how": "clicked 下一页",
+     "new_items_vs_prev_pages": 15,
+     "url": "https://m.58.com/ganzi/job/pn3/",
+     "items": 15,
+     "matched": 0,
+     "cityListName": "ganzi",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "m_key",
+     "page": 4,
+     "how": "constructed (pager not rendered)",
+     "new_items_vs_prev_pages": 2,
+     "url": "https://m.58.com/ganzi/job/pn4/",
+     "items": 30,
+     "matched": 1,
+     "cityListName": "ganzi",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "m_key",
+     "page": 5,
+     "how": "constructed (pager not rendered)",
+     "new_items_vs_prev_pages": 0,
+     "url": "https://m.58.com/ganzi/job/pn5/",
+     "items": 30,
+     "matched": 1,
+     "cityListName": "ganzi",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "pc_key",
+     "page": 1,
+     "how": "entry",
+     "new_items_vs_prev_pages": 30,
+     "url": "https://m.58.com/ganzi/job/?reform=pcfront&key=%E6%96%B0%E9%BE%99",
+     "items": 30,
+     "matched": 1,
+     "cityListName": "ganzi",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "pc_key",
+     "page": 2,
+     "how": "clicked 下一页",
+     "new_items_vs_prev_pages": 30,
+     "url": "https://m.58.com/ganzi/job/pn2/",
+     "items": 30,
+     "matched": 0,
+     "cityListName": "ganzi",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "pc_key",
+     "page": 3,
+     "how": "clicked 下一页",
+     "new_items_vs_prev_pages": 0,
+     "url": "https://m.58.com/ganzi/job/pn3/",
+     "items": 0,
+     "matched": 0,
+     "cityListName": "ganzi",
+     "kw": "null",
+     "ipCityListName": "",
+     "stop": "no new items vs previous pages"
+    },
+    {
+     "entry": "area_xinlongxiangz",
+     "page": 1,
+     "how": "entry",
+     "new_items_vs_prev_pages": 1,
+     "url": "https://m.58.com/xinlongxiangz/job/",
+     "items": 1,
+     "matched": 1,
+     "cityListName": "xinlongxiangz",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "area_xinlongxiangz",
+     "page": 2,
+     "how": "constructed (pager not rendered)",
+     "new_items_vs_prev_pages": 0,
+     "url": "https://m.58.com/xinlongxiangz/job/pn2/",
+     "items": 0,
+     "matched": 0,
+     "cityListName": "xinlongxiangz",
+     "kw": "null",
+     "ipCityListName": "",
+     "stop": "no new items vs previous pages"
+    },
+    {
+     "entry": "area_xinlongxian",
+     "page": 1,
+     "how": "entry",
+     "new_items_vs_prev_pages": 30,
+     "url": "https://m.58.com/xinlongxian/job/",
+     "items": 30,
+     "matched": 1,
+     "cityListName": "xinlongxian",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "area_xinlongxian",
+     "page": 2,
+     "how": "constructed (pager not rendered)",
+     "new_items_vs_prev_pages": 2,
+     "url": "https://m.58.com/xinlongxian/job/pn2/",
+     "items": 30,
+     "matched": 1,
+     "cityListName": "xinlongxian",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "area_xinlongxian",
+     "page": 3,
+     "how": "constructed (pager not rendered)",
+     "new_items_vs_prev_pages": 0,
+     "url": "https://m.58.com/xinlongxian/job/pn3/",
+     "items": 30,
+     "matched": 1,
+     "cityListName": "xinlongxian",
+     "kw": "null",
+     "ipCityListName": "",
+     "stop": "no new items vs previous pages"
+    },
+    {
+     "entry": "area_zhaopin_xinlongxiangz",
+     "page": 1,
+     "how": "entry",
+     "new_items_vs_prev_pages": 30,
+     "url": "https://m.58.com/xinlongxiangz/zhaopin/",
+     "items": 30,
+     "matched": 1,
+     "cityListName": "xinlongxiangz",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "area_zhaopin_xinlongxiangz",
+     "page": 2,
+     "how": "constructed (pager not rendered)",
+     "new_items_vs_prev_pages": 1,
+     "url": "https://m.58.com/xinlongxiangz/zhaopin/pn2/",
+     "items": 30,
+     "matched": 0,
+     "cityListName": "xinlongxiangz",
+     "kw": "null",
+     "ipCityListName": "",
+     "stop": "area page with 0 county matches"
+    },
+    {
+     "entry": "area_zhaopin_xinlongxian",
+     "page": 1,
+     "how": "entry",
+     "new_items_vs_prev_pages": 30,
+     "url": "https://m.58.com/xinlongxian/zhaopin/",
+     "items": 30,
+     "matched": 0,
+     "cityListName": "xinlongxian",
+     "kw": "null",
+     "ipCityListName": "",
+     "stop": "area page with 0 county matches"
+    }
+   ],
+   "matched_posts": [
+    {
+     "title": "甜品/烘焙店蛋糕/裱花师工作时间灵活",
+     "region": "新龙县-人民路",
+     "company": "新龙县伊米多蛋糕店（个体工商户）",
+     "fields": [
+      "region",
+      "company"
+     ],
+     "page": "https://m.58.com/ganzi/job/?key=%E6%96%B0%E9%BE%99"
+    }
+   ],
+   "excluded_ambiguous": [],
+   "dropped_duplicates": []
+  },
+  {
+   "county_code": "513330",
+   "county_name": "德格县",
+   "rows": 1,
+   "行数": 1,
+   "entries_that_yielded_rows": "ganzi.58.com/job/?key=德格 -> m.58.com/ganzi/job/?reform=pcfront&key=德格, page 2 (generic 甘孜 pool); also on m.58.com/degexian/job/ (德格 area channel)",
+   "opened_urls": [
+    "https://m.58.com/ganzi/zhaopin/",
+    "https://ganzi.58.com/",
+    "https://m.58.com/ganzi/job/?key=%E5%BE%B7%E6%A0%BC",
+    "https://m.58.com/ganzi/job/pn2/",
+    "https://ganzi.58.com/job/?key=%E5%BE%B7%E6%A0%BC",
+    "https://m.58.com/ganzi/job/pn2/?reform=pcfront&key=%E5%BE%B7%E6%A0%BC",
+    "https://m.58.com/ganzi/job/pn3/",
+    "https://m.58.com/ganzi/job/pn4/",
+    "https://m.58.com/ganzi/job/pn5/",
+    "https://m.58.com/degexian/job/",
+    "https://m.58.com/degexian/zhaopin/",
+    "https://m.58.com/degexian/zhaopin/pn2/"
+   ],
+   "discarded_urls": [
+    {
+     "url": "https://ganzi.58.com/",
+     "final_url": "https://m.58.com/city.html?from=iperror",
+     "reason": "warm-up page: redirect to 58 city selector (m.58.com/city.html?from=iperror)"
+    }
+   ],
+   "zero_row_reason": null,
+   "pages": [
+    {
+     "entry": "m_key",
+     "page": 1,
+     "how": "entry",
+     "new_items_vs_prev_pages": 30,
+     "url": "https://m.58.com/ganzi/job/?key=%E5%BE%B7%E6%A0%BC",
+     "items": 30,
+     "matched": 0,
+     "cityListName": "ganzi",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "m_key",
+     "page": 2,
+     "how": "clicked 下一页",
+     "new_items_vs_prev_pages": 0,
+     "url": "https://m.58.com/ganzi/job/pn2/",
+     "items": 30,
+     "matched": 0,
+     "cityListName": "ganzi",
+     "kw": "null",
+     "ipCityListName": "",
+     "stop": "no new items vs previous pages"
+    },
+    {
+     "entry": "pc_key",
+     "page": 1,
+     "how": "entry",
+     "new_items_vs_prev_pages": 30,
+     "url": "https://m.58.com/ganzi/job/?reform=pcfront&key=%E5%BE%B7%E6%A0%BC",
+     "items": 30,
+     "matched": 0,
+     "cityListName": "ganzi",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "pc_key",
+     "page": 2,
+     "how": "constructed (pager not rendered)",
+     "new_items_vs_prev_pages": 30,
+     "url": "https://m.58.com/ganzi/job/pn2/?reform=pcfront&key=%E5%BE%B7%E6%A0%BC",
+     "items": 30,
+     "matched": 1,
+     "cityListName": "ganzi",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "pc_key",
+     "page": 3,
+     "how": "clicked 下一页",
+     "new_items_vs_prev_pages": 15,
+     "url": "https://m.58.com/ganzi/job/pn3/",
+     "items": 30,
+     "matched": 0,
+     "cityListName": "ganzi",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "pc_key",
+     "page": 4,
+     "how": "constructed (pager not rendered)",
+     "new_items_vs_prev_pages": 1,
+     "url": "https://m.58.com/ganzi/job/pn4/",
+     "items": 30,
+     "matched": 0,
+     "cityListName": "ganzi",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "pc_key",
+     "page": 5,
+     "how": "constructed (pager not rendered)",
+     "new_items_vs_prev_pages": 0,
+     "url": "https://m.58.com/ganzi/job/pn5/",
+     "items": 0,
+     "matched": 0,
+     "cityListName": "ganzi",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "area_degexian",
+     "page": 1,
+     "how": "entry",
+     "new_items_vs_prev_pages": 0,
+     "url": "https://m.58.com/degexian/job/",
+     "items": 0,
+     "matched": 0,
+     "cityListName": "degexian",
+     "kw": "null",
+     "ipCityListName": "",
+     "stop": "area page with 0 county matches"
+    },
+    {
+     "entry": "area_zhaopin_degexian",
+     "page": 1,
+     "how": "entry",
+     "new_items_vs_prev_pages": 1,
+     "url": "https://m.58.com/degexian/zhaopin/",
+     "items": 1,
+     "matched": 1,
+     "cityListName": "degexian",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "area_zhaopin_degexian",
+     "page": 2,
+     "how": "constructed (pager not rendered)",
+     "new_items_vs_prev_pages": 30,
+     "url": "https://m.58.com/degexian/zhaopin/pn2/",
+     "items": 30,
+     "matched": 0,
+     "cityListName": "degexian",
+     "kw": "null",
+     "ipCityListName": "",
+     "stop": "area page with 0 county matches"
+    }
+   ],
+   "matched_posts": [
+    {
+     "title": "成鑫传媒/平面设计包吃包住",
+     "region": "德格-格萨尔大街",
+     "company": "德格县成鑫传媒有限责任公司",
+     "fields": [
+      "region",
+      "company"
+     ],
+     "page": "https://m.58.com/ganzi/job/pn2/?reform=pcfront&key=%E5%BE%B7%E6%A0%BC"
+    }
+   ],
+   "excluded_ambiguous": [],
+   "dropped_duplicates": []
+  },
+  {
+   "county_code": "513333",
+   "county_name": "色达县",
+   "rows": 1,
+   "行数": 1,
+   "entries_that_yielded_rows": "m.58.com/ganzi/job/?key=色达 page 1 (generic 甘孜 pool); also on m.58.com/sedaxian/job/ (甘孜周边-色达 area channel)",
+   "opened_urls": [
+    "https://m.58.com/ganzi/zhaopin/",
+    "https://ganzi.58.com/",
+    "https://m.58.com/ganzi/job/?key=%E8%89%B2%E8%BE%BE",
+    "https://m.58.com/ganzi/job/pn2/?key=%E8%89%B2%E8%BE%BE",
+    "https://m.58.com/ganzi/job/pn3/",
+    "https://m.58.com/ganzi/job/pn4/",
+    "https://ganzi.58.com/job/?key=%E8%89%B2%E8%BE%BE",
+    "https://m.58.com/ganzi/job/pn2/",
+    "https://m.58.com/ganzi/job/pn3/",
+    "https://m.58.com/ganzi/job/pn4/",
+    "https://m.58.com/sedaxiangz/job/",
+    "https://m.58.com/sedaxiangz/job/pn2/",
+    "https://m.58.com/sedaxian/job/",
+    "https://m.58.com/sedaxian/job/pn2/",
+    "https://m.58.com/sedaxian/job/pn3/",
+    "https://m.58.com/sedaxiangz/zhaopin/",
+    "https://m.58.com/sedaxian/zhaopin/",
+    "https://m.58.com/sedaxian/zhaopin/pn2/"
+   ],
+   "discarded_urls": [
+    {
+     "url": "https://ganzi.58.com/",
+     "final_url": "https://m.58.com/city.html?from=iperror",
+     "reason": "warm-up page: redirect to 58 city selector (m.58.com/city.html?from=iperror)"
+    }
+   ],
+   "zero_row_reason": null,
+   "pages": [
+    {
+     "entry": "m_key",
+     "page": 1,
+     "how": "entry",
+     "new_items_vs_prev_pages": 30,
+     "url": "https://m.58.com/ganzi/job/?key=%E8%89%B2%E8%BE%BE",
+     "items": 30,
+     "matched": 1,
+     "cityListName": "ganzi",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "m_key",
+     "page": 2,
+     "how": "constructed (pager not rendered)",
+     "new_items_vs_prev_pages": 30,
+     "url": "https://m.58.com/ganzi/job/pn2/?key=%E8%89%B2%E8%BE%BE",
+     "items": 30,
+     "matched": 0,
+     "cityListName": "ganzi",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "m_key",
+     "page": 3,
+     "how": "clicked 下一页",
+     "new_items_vs_prev_pages": 15,
+     "url": "https://m.58.com/ganzi/job/pn3/",
+     "items": 15,
+     "matched": 0,
+     "cityListName": "ganzi",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "m_key",
+     "page": 4,
+     "how": "constructed (pager not rendered)",
+     "new_items_vs_prev_pages": 0,
+     "url": "https://m.58.com/ganzi/job/pn4/",
+     "items": 30,
+     "matched": 1,
+     "cityListName": "ganzi",
+     "kw": "null",
+     "ipCityListName": "",
+     "stop": "no new items vs previous pages"
+    },
+    {
+     "entry": "pc_key",
+     "page": 1,
+     "how": "entry",
+     "new_items_vs_prev_pages": 30,
+     "url": "https://m.58.com/ganzi/job/?reform=pcfront&key=%E8%89%B2%E8%BE%BE",
+     "items": 30,
+     "matched": 1,
+     "cityListName": "ganzi",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "pc_key",
+     "page": 2,
+     "how": "clicked 下一页",
+     "new_items_vs_prev_pages": 30,
+     "url": "https://m.58.com/ganzi/job/pn2/",
+     "items": 30,
+     "matched": 0,
+     "cityListName": "ganzi",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "pc_key",
+     "page": 3,
+     "how": "clicked 下一页",
+     "new_items_vs_prev_pages": 15,
+     "url": "https://m.58.com/ganzi/job/pn3/",
+     "items": 15,
+     "matched": 0,
+     "cityListName": "ganzi",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "pc_key",
+     "page": 4,
+     "how": "constructed (pager not rendered)",
+     "new_items_vs_prev_pages": 0,
+     "url": "https://m.58.com/ganzi/job/pn4/",
+     "items": 30,
+     "matched": 1,
+     "cityListName": "ganzi",
+     "kw": "null",
+     "ipCityListName": "",
+     "stop": "no new items vs previous pages"
+    },
+    {
+     "entry": "area_sedaxiangz",
+     "page": 1,
+     "how": "entry",
+     "new_items_vs_prev_pages": 30,
+     "url": "https://m.58.com/sedaxiangz/job/",
+     "items": 30,
+     "matched": 1,
+     "cityListName": "sedaxiangz",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "area_sedaxiangz",
+     "page": 2,
+     "how": "constructed (pager not rendered)",
+     "new_items_vs_prev_pages": 0,
+     "url": "https://m.58.com/sedaxiangz/job/pn2/",
+     "items": 30,
+     "matched": 1,
+     "cityListName": "sedaxiangz",
+     "kw": "null",
+     "ipCityListName": "",
+     "stop": "no new items vs previous pages"
+    },
+    {
+     "entry": "area_sedaxian",
+     "page": 1,
+     "how": "entry",
+     "new_items_vs_prev_pages": 1,
+     "url": "https://m.58.com/sedaxian/job/",
+     "items": 1,
+     "matched": 1,
+     "cityListName": "sedaxian",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "area_sedaxian",
+     "page": 2,
+     "how": "constructed (pager not rendered)",
+     "new_items_vs_prev_pages": 29,
+     "url": "https://m.58.com/sedaxian/job/pn2/",
+     "items": 30,
+     "matched": 1,
+     "cityListName": "sedaxian",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "area_sedaxian",
+     "page": 3,
+     "how": "constructed (pager not rendered)",
+     "new_items_vs_prev_pages": 0,
+     "url": "https://m.58.com/sedaxian/job/pn3/",
+     "items": 30,
+     "matched": 1,
+     "cityListName": "sedaxian",
+     "kw": "null",
+     "ipCityListName": "",
+     "stop": "no new items vs previous pages"
+    },
+    {
+     "entry": "area_zhaopin_sedaxiangz",
+     "page": 1,
+     "how": "entry",
+     "new_items_vs_prev_pages": 30,
+     "url": "https://m.58.com/sedaxiangz/zhaopin/",
+     "items": 30,
+     "matched": 0,
+     "cityListName": "sedaxiangz",
+     "kw": "null",
+     "ipCityListName": "",
+     "stop": "area page with 0 county matches"
+    },
+    {
+     "entry": "area_zhaopin_sedaxian",
+     "page": 1,
+     "how": "entry",
+     "new_items_vs_prev_pages": 30,
+     "url": "https://m.58.com/sedaxian/zhaopin/",
+     "items": 30,
+     "matched": 1,
+     "cityListName": "sedaxian",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "area_zhaopin_sedaxian",
+     "page": 2,
+     "how": "constructed (pager not rendered)",
+     "new_items_vs_prev_pages": 1,
+     "url": "https://m.58.com/sedaxian/zhaopin/pn2/",
+     "items": 30,
+     "matched": 0,
+     "cityListName": "sedaxian",
+     "kw": "null",
+     "ipCityListName": "",
+     "stop": "area page with 0 county matches"
+    }
+   ],
+   "matched_posts": [
+    {
+     "title": "中餐厅厨师包住定期打扫两人间",
+     "region": "甘孜周边-色达",
+     "company": "色达县汪记三合一江湖菜馆（个体工商户）",
+     "fields": [
+      "region",
+      "company"
+     ],
+     "page": "https://m.58.com/ganzi/job/?key=%E8%89%B2%E8%BE%BE"
+    }
+   ],
+   "excluded_ambiguous": [],
+   "dropped_duplicates": []
+  },
+  {
+   "county_code": "513338",
+   "county_name": "得荣县",
+   "rows": 0,
+   "行数": 0,
+   "entries_that_yielded_rows": "",
+   "opened_urls": [
+    "https://m.58.com/ganzi/zhaopin/",
+    "https://ganzi.58.com/",
+    "https://m.58.com/ganzi/job/?key=%E5%BE%97%E8%8D%A3",
+    "https://m.58.com/ganzi/job/pn2/?key=%E5%BE%97%E8%8D%A3",
+    "https://m.58.com/ganzi/job/pn3/",
+    "https://ganzi.58.com/job/?key=%E5%BE%97%E8%8D%A3",
+    "https://m.58.com/ganzi/job/pn2/",
+    "https://m.58.com/ganzi/job/pn3/",
+    "https://m.58.com/derongxiangz/job/",
+    "https://m.58.com/derongxian/job/",
+    "https://m.58.com/derongxiangz/zhaopin/",
+    "https://m.58.com/derongxian/zhaopin/"
+   ],
+   "discarded_urls": [
+    {
+     "url": "https://ganzi.58.com/",
+     "final_url": "https://m.58.com/city.html?from=iperror",
+     "reason": "warm-up page: redirect to 58 city selector (m.58.com/city.html?from=iperror)"
+    }
+   ],
+   "zero_row_reason": "m.58.com/ganzi/job/?key=得荣 and ganzi.58.com/job/?key=得荣 ignore the keyword (kw=null) and return the generic 甘孜 pool (pages 1-2 distinct, page 3 repeated/empty), with no post mentioning 得荣. 58's 得荣 area channels (m.58.com/derongxiangz/ and m.58.com/derongxian/, both /job/ and /zhaopin/) only show prefecture-wide filler (康定/泸定/理塘/九龙...), none 得荣. 58 currently has no 得荣 job posts visible.",
+   "pages": [
+    {
+     "entry": "m_key",
+     "page": 1,
+     "how": "entry",
+     "new_items_vs_prev_pages": 30,
+     "url": "https://m.58.com/ganzi/job/?key=%E5%BE%97%E8%8D%A3",
+     "items": 30,
+     "matched": 0,
+     "cityListName": "ganzi",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "m_key",
+     "page": 2,
+     "how": "constructed (pager not rendered)",
+     "new_items_vs_prev_pages": 30,
+     "url": "https://m.58.com/ganzi/job/pn2/?key=%E5%BE%97%E8%8D%A3",
+     "items": 30,
+     "matched": 0,
+     "cityListName": "ganzi",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "m_key",
+     "page": 3,
+     "how": "clicked 下一页",
+     "new_items_vs_prev_pages": 0,
+     "url": "https://m.58.com/ganzi/job/pn3/",
+     "items": 30,
+     "matched": 0,
+     "cityListName": "ganzi",
+     "kw": "null",
+     "ipCityListName": "",
+     "stop": "no new items vs previous pages"
+    },
+    {
+     "entry": "pc_key",
+     "page": 1,
+     "how": "entry",
+     "new_items_vs_prev_pages": 30,
+     "url": "https://m.58.com/ganzi/job/?reform=pcfront&key=%E5%BE%97%E8%8D%A3",
+     "items": 30,
+     "matched": 0,
+     "cityListName": "ganzi",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "pc_key",
+     "page": 2,
+     "how": "clicked 下一页",
+     "new_items_vs_prev_pages": 30,
+     "url": "https://m.58.com/ganzi/job/pn2/",
+     "items": 30,
+     "matched": 0,
+     "cityListName": "ganzi",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "pc_key",
+     "page": 3,
+     "how": "clicked 下一页",
+     "new_items_vs_prev_pages": 0,
+     "url": "https://m.58.com/ganzi/job/pn3/",
+     "items": 0,
+     "matched": 0,
+     "cityListName": "ganzi",
+     "kw": "null",
+     "ipCityListName": "",
+     "stop": "no new items vs previous pages"
+    },
+    {
+     "entry": "area_derongxiangz",
+     "page": 1,
+     "how": "entry",
+     "new_items_vs_prev_pages": 30,
+     "url": "https://m.58.com/derongxiangz/job/",
+     "items": 30,
+     "matched": 0,
+     "cityListName": "derongxiangz",
+     "kw": "null",
+     "ipCityListName": "",
+     "stop": "area page with 0 county matches"
+    },
+    {
+     "entry": "area_derongxian",
+     "page": 1,
+     "how": "entry",
+     "new_items_vs_prev_pages": 30,
+     "url": "https://m.58.com/derongxian/job/",
+     "items": 30,
+     "matched": 0,
+     "cityListName": "derongxian",
+     "kw": "null",
+     "ipCityListName": "",
+     "stop": "area page with 0 county matches"
+    },
+    {
+     "entry": "area_zhaopin_derongxiangz",
+     "page": 1,
+     "how": "entry",
+     "new_items_vs_prev_pages": 30,
+     "url": "https://m.58.com/derongxiangz/zhaopin/",
+     "items": 30,
+     "matched": 0,
+     "cityListName": "derongxiangz",
+     "kw": "null",
+     "ipCityListName": "",
+     "stop": "area page with 0 county matches"
+    },
+    {
+     "entry": "area_zhaopin_derongxian",
+     "page": 1,
+     "how": "entry",
+     "new_items_vs_prev_pages": 30,
+     "url": "https://m.58.com/derongxian/zhaopin/",
+     "items": 30,
+     "matched": 0,
+     "cityListName": "derongxian",
+     "kw": "null",
+     "ipCityListName": "",
+     "stop": "area page with 0 county matches"
+    }
+   ],
+   "matched_posts": [],
+   "excluded_ambiguous": [],
+   "dropped_duplicates": []
+  },
+  {
+   "county_code": "513434",
+   "county_name": "越西县",
+   "rows": 13,
+   "行数": 13,
+   "entries_that_yielded_rows": "m.58.com/liangshan/job/?key=越西 (p1-2), m.58.com/yxls/job/ and m.58.com/yxcqls/job/ (58 越西 / 越西城区 area channels), m.58.com/yxls/zhaopin/ and m.58.com/yxcqls/zhaopin/",
+   "opened_urls": [
+    "https://m.58.com/liangshan/zhaopin/",
+    "https://m.58.com/xichang/job/?key=%E8%B6%8A%E8%A5%BF",
+    "https://m.58.com/liangshan/job/?key=%E8%B6%8A%E8%A5%BF",
+    "https://m.58.com/liangshan/job/pn2/?key=%E8%B6%8A%E8%A5%BF",
+    "https://m.58.com/yxls/job/",
+    "https://m.58.com/yxls/job/pn2/",
+    "https://m.58.com/yxcqls/job/",
+    "https://m.58.com/yxcqls/job/pn2/",
+    "https://m.58.com/yxcqls/job/pn3/",
+    "https://m.58.com/yxls/zhaopin/",
+    "https://m.58.com/yxls/zhaopin/pn2/",
+    "https://m.58.com/yxls/zhaopin/pn3/",
+    "https://m.58.com/yxcqls/zhaopin/",
+    "https://m.58.com/yxcqls/zhaopin/pn2/"
+   ],
+   "discarded_urls": [
+    {
+     "url": "https://m.58.com/xichang/job/?key=%E8%B6%8A%E8%A5%BF",
+     "final_url": "https://m.58.com/xichang/job/?key=%E8%B6%8A%E8%A5%BF",
+     "reason": "redirect to other city: page city '屯昌' (title: 屯昌西昌全职招聘_全职招聘网_屯昌西昌人才招聘 - 屯昌58)"
+    }
+   ],
+   "zero_row_reason": null,
+   "pages": [
+    {
+     "entry": "liangshan_key",
+     "page": 1,
+     "how": "entry",
+     "new_items_vs_prev_pages": 30,
+     "url": "https://m.58.com/liangshan/job/?key=%E8%B6%8A%E8%A5%BF",
+     "items": 30,
+     "matched": 2,
+     "cityListName": "liangshan",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "liangshan_key",
+     "page": 2,
+     "how": "constructed (pager not rendered)",
+     "new_items_vs_prev_pages": 0,
+     "url": "https://m.58.com/liangshan/job/pn2/?key=%E8%B6%8A%E8%A5%BF",
+     "items": 30,
+     "matched": 2,
+     "cityListName": "liangshan",
+     "kw": "null",
+     "ipCityListName": "",
+     "stop": "no new items vs previous pages"
+    },
+    {
+     "entry": "area_yxls",
+     "page": 1,
+     "how": "entry",
+     "new_items_vs_prev_pages": 30,
+     "url": "https://m.58.com/yxls/job/",
+     "items": 30,
+     "matched": 2,
+     "cityListName": "yxls",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "area_yxls",
+     "page": 2,
+     "how": "constructed (pager not rendered)",
+     "new_items_vs_prev_pages": 0,
+     "url": "https://m.58.com/yxls/job/pn2/",
+     "items": 0,
+     "matched": 0,
+     "cityListName": "yxls",
+     "kw": "null",
+     "ipCityListName": "",
+     "stop": "no new items vs previous pages"
+    },
+    {
+     "entry": "area_yxcqls",
+     "page": 1,
+     "how": "entry",
+     "new_items_vs_prev_pages": 30,
+     "url": "https://m.58.com/yxcqls/job/",
+     "items": 30,
+     "matched": 4,
+     "cityListName": "yxcqls",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "area_yxcqls",
+     "page": 2,
+     "how": "constructed (pager not rendered)",
+     "new_items_vs_prev_pages": 3,
+     "url": "https://m.58.com/yxcqls/job/pn2/",
+     "items": 30,
+     "matched": 2,
+     "cityListName": "yxcqls",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "area_yxcqls",
+     "page": 3,
+     "how": "constructed (pager not rendered)",
+     "new_items_vs_prev_pages": 0,
+     "url": "https://m.58.com/yxcqls/job/pn3/",
+     "items": 30,
+     "matched": 2,
+     "cityListName": "yxcqls",
+     "kw": "null",
+     "ipCityListName": "",
+     "stop": "no new items vs previous pages"
+    },
+    {
+     "entry": "area_zhaopin_yxls",
+     "page": 1,
+     "how": "entry",
+     "new_items_vs_prev_pages": 30,
+     "url": "https://m.58.com/yxls/zhaopin/",
+     "items": 30,
+     "matched": 12,
+     "cityListName": "yxls",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "area_zhaopin_yxls",
+     "page": 2,
+     "how": "constructed (pager not rendered)",
+     "new_items_vs_prev_pages": 11,
+     "url": "https://m.58.com/yxls/zhaopin/pn2/",
+     "items": 30,
+     "matched": 1,
+     "cityListName": "yxls",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "area_zhaopin_yxls",
+     "page": 3,
+     "how": "constructed (pager not rendered)",
+     "new_items_vs_prev_pages": 0,
+     "url": "https://m.58.com/yxls/zhaopin/pn3/",
+     "items": 30,
+     "matched": 1,
+     "cityListName": "yxls",
+     "kw": "null",
+     "ipCityListName": "",
+     "stop": "no new items vs previous pages"
+    },
+    {
+     "entry": "area_zhaopin_yxcqls",
+     "page": 1,
+     "how": "entry",
+     "new_items_vs_prev_pages": 30,
+     "url": "https://m.58.com/yxcqls/zhaopin/",
+     "items": 30,
+     "matched": 4,
+     "cityListName": "yxcqls",
+     "kw": "null",
+     "ipCityListName": ""
+    },
+    {
+     "entry": "area_zhaopin_yxcqls",
+     "page": 2,
+     "how": "constructed (pager not rendered)",
+     "new_items_vs_prev_pages": 0,
+     "url": "https://m.58.com/yxcqls/zhaopin/pn2/",
+     "items": 0,
+     "matched": 0,
+     "cityListName": "yxcqls",
+     "kw": "null",
+     "ipCityListName": "",
+     "stop": "no new items vs previous pages"
+    }
+   ],
+   "matched_posts": [
+    {
+     "title": "俱乐部台球教练/助教工作时间灵活/形象佳",
+     "region": "凉山-越西",
+     "company": "越西县独牙汇娱乐有限公司",
+     "fields": [
+      "region",
+      "company"
+     ],
+     "page": "https://m.58.com/liangshan/job/?key=%E8%B6%8A%E8%A5%BF"
+    },
+    {
+     "title": "甜品/烘焙店蛋糕/裱花师包住包吃",
+     "region": "凉山",
+     "company": "越西县可可同学私房蛋糕店（个体工商户）",
+     "fields": [
+      "company"
+     ],
+     "page": "https://m.58.com/liangshan/job/?key=%E8%B6%8A%E8%A5%BF"
+    },
+    {
+     "title": "装载机挖掘机学徒工",
+     "region": "越西-越西城区",
+     "company": "凉山州瑞晨建筑材料有限公司",
+     "fields": [
+      "region"
+     ],
+     "page": "https://m.58.com/yxcqls/job/"
+    },
+    {
+     "title": "跟车/副驾",
+     "region": "越西-越西城区",
+     "company": "凉山州瑞晨建筑材料有限公司",
+     "fields": [
+      "region"
+     ],
+     "page": "https://m.58.com/yxcqls/job/"
+    },
+    {
+     "title": "招聘跟车包吃包住待遇好",
+     "region": "越西-越西城区",
+     "company": "凉山州瑞晨建筑材料有限公司",
+     "fields": [
+      "region"
+     ],
+     "page": "https://m.58.com/yxcqls/job/"
+    },
+    {
+     "title": "贵足时代招聘技师",
+     "region": "凉山-越西",
+     "company": "越西县圣泉洗浴中心（个体工商户）",
+     "fields": [
+      "region",
+      "company"
+     ],
+     "page": "https://m.58.com/yxls/zhaopin/"
+    },
+    {
+     "title": "绿化施工/养护",
+     "region": "凉山-越西",
+     "company": "越西县悦喜物业管理有限责任公司",
+     "fields": [
+      "region",
+      "company"
+     ],
+     "page": "https://m.58.com/yxls/zhaopin/"
+    },
+    {
+     "title": "俱乐部台球教练/助教工作...",
+     "region": "凉山-越西",
+     "company": "越西县独牙汇娱乐有限公司",
+     "fields": [
+      "region",
+      "company"
+     ],
+     "page": "https://m.58.com/yxls/zhaopin/"
+    },
+    {
+     "title": "物业经理/主管",
+     "region": "凉山-越西",
+     "company": "成都交大工程建设集团有限公司西昌分公司",
+     "fields": [
+      "region"
+     ],
+     "page": "https://m.58.com/yxls/zhaopin/"
+    },
+    {
+     "title": "水电工",
+     "region": "凉山-越西",
+     "company": "越西县悦喜物业管理有限责任公司",
+     "fields": [
+      "region",
+      "company"
+     ],
+     "page": "https://m.58.com/yxls/zhaopin/"
+    },
+    {
+     "title": "追爱的一事无成，跑外卖的风生水起",
+     "region": "凉山-越西",
+     "company": "云南美速及时科技有限公司",
+     "fields": [
+      "region"
+     ],
+     "page": "https://m.58.com/yxls/zhaopin/"
+    },
+    {
+     "title": "急招骑手，多跑多得，薪资上不封顶",
+     "region": "凉山-越西",
+     "company": "云南美速及时科技有限公司",
+     "fields": [
+      "region"
+     ],
+     "page": "https://m.58.com/yxls/zhaopin/"
+    },
+    {
+     "title": "找工作进厂不如骑车送外卖",
+     "region": "凉山-越西",
+     "company": "云南美速及时科技有限公司",
+     "fields": [
+      "region"
+     ],
+     "page": "https://m.58.com/yxls/zhaopin/"
+    },
+    {
+     "title": "进厂不如骑手送餐自由钱多",
+     "region": "凉山-越西",
+     "company": "云南美速及时科技有限公司",
+     "fields": [
+      "region"
+     ],
+     "page": "https://m.58.com/yxls/zhaopin/"
+    }
+   ],
+   "excluded_ambiguous": [],
+   "dropped_duplicates": [
+    {
+     "企业名称": "越西县独牙汇娱乐有限公司",
+     "招聘岗位": "俱乐部台球教练/助教工作...",
+     "工作区域": "凉山-越西",
+     "reason": "same infoId 66490574596237 as kept row '俱乐部台球教练/助教工作时间灵活/形象佳' (title truncated by 58 on m.58.com/yxls/zhaopin/)"
+    }
+   ]
+  }
+ ]
+}
